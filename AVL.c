@@ -503,7 +503,8 @@ int main(){
             int n1;
             printf("Digite o elemento para verificar se existe na ABB\n");
             scanf(" %d", &n1);
-            if(ExisteAVL(a, n1))
+            int i = ExisteAVL(a, n1);
+            if(i == 1)
                 printf("O elemento %d Existe na ABB\n", n1);
             else
                 printf("O elemento %d NAO Existe na ABB\n", n1);
