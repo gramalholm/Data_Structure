@@ -157,16 +157,17 @@ void imprimirAVL(AVL* a){
 }
 
 int ExisteAVL(AVL *a, int x){
-    if(a == NULL)
-        return 0;
-    else{
+    if(a!=NULL){
         if(a->info == x)
             return 1;
-        else if(a->info < x)
-            return ExisteAVL(a->esq, x);
-        else
-            return ExisteAVL(a->dir, x);
+        else{
+            if(x < a->info)
+                return ExisteAVL(a->esq, x);
+            else if(x > a->info)
+                return ExisteAVL(a->dir, x);
+        }
     }
+    return 0;
 }
 
 int Imp_nivel_de_x(AVL* a,int cont, int x){
@@ -490,7 +491,7 @@ int main(){
             caminho[strcspn(caminho, "\n")] = 0;
             FILE *f = fopen(caminho, "rt");
             if(f == NULL) {
-                printf("Erro ao abrir o arquivo.\n");
+                printf("\nErro ao abrir o arquivo.\n");
                 continue;
             }
             a = LerAVL(f);
@@ -501,29 +502,29 @@ int main(){
         }
         if(opcao == 3){
             int n1;
-            printf("Digite o elemento para verificar se existe na ABB\n");
+            printf("\nDigite o elemento para verificar se existe na ABB\n");
             scanf(" %d", &n1);
             int i = ExisteAVL(a, n1);
             if(i == 1)
-                printf("O elemento %d Existe na ABB\n", n1);
+                printf("\nO elemento %d Existe na ABB\n", n1);
             else
-                printf("O elemento %d NAO Existe na ABB\n", n1);
+                printf("\nO elemento %d NAO Existe na ABB\n", n1);
         }
         if(opcao == 4){
             int n2;
             int cont = 0;
-            printf("Digite o nivel do elemento x \n");
+            printf("\nDigite o elemento que deseja saber o nivel: \n");
             scanf(" %d", &n2);
             int i = Imp_nivel_de_x(a, cont, n2);
             if(i != -1)
-                printf("Nivel de X = %d\n", i);
+                printf("\nNivel do elemento %d = %d\n", n2, i);
             else{
-                printf("Arvore Nula\n");
+                printf("\nArvore Nula\n");
             }
         }
         if(opcao == 5){
             int n3;
-            printf("Digite o numero para imprimir as folhas menores que ele: \n");
+            printf("\nDigite o numero para imprimir as folhas menores que ele: \n");
             fflush(stdin);
             scanf(" %d", &n3);
             imp_folha_mnr_x(a, n3);
@@ -531,18 +532,28 @@ int main(){
         if(opcao == 6){
             int n4;
             int hmudou = 0;
-            printf("Digite o valor que voce quer inserir: \n");
+            printf("\nDigite o valor que voce quer inserir: \n");
             scanf(" %d", &n4);
             a = inserir(a, n4, &hmudou);
             PreOrdem(a);
         }
         if(opcao == 7){
-            int n5;
+            int n5, existe;
             int hmudou = 0;
-            printf("Digite o valor que voce quer remover: \n");
+            printf("\nDigite o valor que voce quer remover: \n");
             scanf(" %d", &n5);
-            a = remover(a, n5, &hmudou);
-            PreOrdem(a);
+            existe = ExisteAVL(a, n5);
+            if(existe == 0)
+                printf("O elemento digitado nao existe na arvore\n");
+            else{
+                a = remover(a, n5, &hmudou);
+                if(a == NULL){
+                    printf("\nNao existem elementos na arvore");
+                }
+                else{
+                PreOrdem(a);
+                }
+            }
         }
         if(opcao == 8){
             freeAVL(a);
