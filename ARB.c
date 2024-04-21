@@ -60,3 +60,11 @@ int H_negra(ArvRubroNegra *a, int *hN){
     }
     return 0;
 }
+
+int main(){
+    ArvRubroNegra *a = NULL;
+    char c; 
+    printf("Digite o caminho do seu arquivo: \n");
+    scanf("%c", &c);
+    FILE* f = fopen(c, "rt");
+}
