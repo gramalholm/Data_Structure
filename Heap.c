@@ -1,7 +1,9 @@
+//Aluno Gabriel Ramalho Lima
+//Matricula: 123060006
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
-
 int totalElem = 0;
 
 int menu(){
@@ -30,6 +32,7 @@ int indiceFEsq(int x){
     else
         return indice;
 }
+
 int indiceFDir(int x){
     int indice = (2*x) + 2;
     if(x>=totalElem || indice>=totalElem)
