@@ -243,6 +243,21 @@ void RemoverABB(Arvore*a){
     }
 }
 
+void existeEmDuasArvores(Arvore *a, Arvore *b){
+    if(a != NULL){
+        if(existeemABB(b, a->info)){
+            printf("%d", a->info);
+            existeEmDuasArvores(a->esq, b);
+            existeEmDuasArvores(a->dir,b);
+        }
+        else{
+            printf("%d nao existe na arvore b", a->info);
+            existeEmDuasArvores(a->esq, b);
+            existeEmDuasArvores(a->dir, b);
+        }
+    }
+}
+
 int main(){
     int opcao;
     Arvore *a = NULL;
@@ -257,7 +272,6 @@ int main(){
             FILE *f = fopen(caminho, "rt");
             a = LerABB(f);
             fclose(f);
-
         }
         if(opcao == 2){
             imprimirABB(a);

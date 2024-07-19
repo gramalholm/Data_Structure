@@ -77,7 +77,7 @@ void insert(char *path, Student *s){
 
 void print_student(char *path, int x){
     int pos = hash(x, N);
-    FILE *f = fopen(path, "rb");
+    FILE *f = fopen(path, "rb+");
     Register r;
     fseek(f,pos*sizeof(Register), SEEK_SET);
     fread(&r, sizeof(Register), 1, f);
@@ -119,7 +119,7 @@ int main(){
     while(opc!=4){
         opc = menu();
         if(opc == 1){
-            int mat;
+            long int mat;
             char name[100];
             char course[50];
             Student *a;
@@ -132,7 +132,7 @@ int main(){
             scanf(" %[^\n]", course);
             fflush(stdin);
             printf("Matricula: \n");
-            scanf(" %d", &mat);
+            scanf(" %li", &mat);
             a = createStudent(mat,name,course);
             insert(path, a);
             printf("Aluno inserido! \n");

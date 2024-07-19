@@ -43,8 +43,8 @@ void imprimir(Lista* l){
 int main(){
     Lista* lista = new_item(10);
     lista = push_front(lista, 8);
-    lista = push_front(lista, 5);
     lista = push_front(lista, 6);
+    lista = push_front(lista, 5);
 
     remov_elemento(lista, 6);
     imprimir(lista);
