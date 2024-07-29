@@ -55,5 +55,4 @@ void impFila(Fila f){
 
 Fila destruir(Fila f){
     free(f);
-    return NULL;
 }
