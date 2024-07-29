@@ -17,7 +17,7 @@ Fila inicializar(){
 }
 
 int filaVazia(Fila f){
-    if(f->tamanho == 0){
+    if(f->tamanho <= 0){
         return 1;
     }
     return 0;

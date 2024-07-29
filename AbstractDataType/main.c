@@ -30,7 +30,7 @@ int main(){
         }
         if(op == 2){
             int elemremovido,verificador;
-            verificador = (f, &elemremovido);
+            verificador = remover(f, &elemremovido);
             if(verificador == 1){
                 printf("Elemento %d removido do inicio da fila\n", elemremovido);
             }else{
